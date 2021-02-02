@@ -1,6 +1,5 @@
 import os
 import shutil
-import time
 
 """
 将当前目录下的文件或文件夹内的文件（包含子文件夹）保存到指定目录
