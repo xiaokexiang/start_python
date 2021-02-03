@@ -10,9 +10,9 @@ def _move_():
     source = input('Please input source dir: ')
     dest = input('Please input dest dir: ')
     log_name = os.path.join(dest, 'move.log')
-    f = open(log_name, mode='a')
     if not os.path.exists(dest):
         os.mkdir(dest)
+    f = open(log_name, mode='a')
     count = 0
     for root, dirs, files in os.walk(source, topdown=False):
         for filename in files:
