@@ -18,11 +18,11 @@ def read(path):
             source = os.path.join(path, filename)
             position = get_type(filename)
             if position is None:
-                shutil.copyfile(source, other_dir)
+                shutil.copyfile(source, os.path.join(other_dir, filename))
                 continue
             new_file_name = rename(filename)
             if new_file_name is None:
-                shutil.copyfile(source, other_dir)
+                shutil.copyfile(source, os.path.join(other_dir, filename))
                 continue
             dest_dir = os.path.join(_dir_, position)
             if not os.path.exists(dest_dir):
