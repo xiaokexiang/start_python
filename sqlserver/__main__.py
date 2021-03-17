@@ -83,7 +83,7 @@ def save(row, attach):
         a = {}
         for attach in attach.get(row[0]):
             a['filename'] = attach.filename
-            a['path'] = attach.path
+            a['path'] = attach.path + '/' + attach.filename
             array.append(a)
         body['attachments'] = array
     if row[21] is not None:
@@ -92,7 +92,7 @@ def save(row, attach):
     # json_body = json.dumps(body, ensure_ascii=False)
     response = requests.post(url='http://10.10.10.7:8080/v1/private/tc/news/save',
                              json=body, headers={
-            'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjY4MjVkNzhjLWJjOTMtNDI1Ny1hNjE3LTY4NTExM2RhZWNhNSJ9.Gu-UVs99zy8hMCWWcBQTUTMP_luJXv4lYPOn6Q5jv_t0Q0tPuneZHh8gERFzrpNrBIkHx4pOE6GgbGHqWQuDfg',
+            'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImNiMWM1NDljLWVmMTEtNDU0Yi1hNjM3LTYxYmIyNDQwY2Q0OSJ9.dBM5rga4CNos4CD71ESYFrKYFGp3nOuB2X1tkH6TsItlJMFEMP7f4Ecu2FpH4xThFD0R4zUpxpq1Z9r6wGw6rA',
             'Content-Type': 'application/json;charset=UTF-8'})
     if eval(response.content.decode('utf-8'))['code'] != 200:
         print(body.get('title'))
